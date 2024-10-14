@@ -1,0 +1,20 @@
+---
+- name: Install git and clone a repo
+  hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: installing git
+      yum:
+        name: git
+        state: present
+
+    - name: Cloning the repo
+      git:
+        repo: 'https://github.com/Amanullhakhan33/solar-system.git'
+        dest: /home/ansible/solar-system
+        version: main
+        force: yes
+        update: yes
+
